@@ -1,4 +1,4 @@
-# Devofure/version-reader-action@1.0.0
+# Devofure/version-reader-action
 
 Get the version code, android version name and detailed version information
 
@@ -9,14 +9,14 @@ For more information about Semver version format -> https://semver.org/
 ```yaml
   - name: version reader
     id: versionReader
-    uses: Devofure/version-reader-action@1.0.0 
+    uses: Devofure/version-reader-action@v1.0.0 
     # Default is app/build.gradle
 ```
 Or
 ```yaml
   - name: version reader
     id: versionReader
-    uses: Devofure/version-reader-action@1.0.0
+    uses: Devofure/version-reader-action@v1.0.0
     with:
       gradlePath: app/build.gradle # Default is app/build.gradle
 ```
@@ -51,7 +51,7 @@ jobs:
 
      - name: version reader
        id: versionReader
-       uses: Devofure/version-reader-action@1.0.0
+       uses: Devofure/version-reader-action@v1.0.0
        
     # possible to use:
     # ${{ steps.versionReader.outputs.versionName }}
