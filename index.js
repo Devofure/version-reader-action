@@ -29,8 +29,8 @@ try {
 	console.log(`Gradle Path : ${gradlePath}`);
 
 	fs.readFile(gradlePath, 'utf8', function (err, data) {
-		if(error){
-			core.setFailed(error.message);
+		if(err){
+			core.setFailed(err.message);
 			return
 		}
 		newGradle = data;
