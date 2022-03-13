@@ -8459,6 +8459,10 @@ try {
 	console.log(`Gradle Path : ${gradlePath}`);
 
 	fs.readFile(gradlePath, 'utf8', function (err, data) {
+		if(error){
+			core.setFailed(error.message);
+			return
+		}
 		newGradle = data;
 
 		const versionCode = newGradle.match(versionCodeRegexPattern)[groupVersionCodeValueIndex];
