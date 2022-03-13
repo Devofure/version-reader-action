@@ -1,4 +1,4 @@
-name: "Version Reader Action"
+name: "Android Version Reader Action"
 description: "Get the version code, android version name and detailed version information"
 inputs:
   gradlePath:
