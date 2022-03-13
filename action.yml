@@ -21,14 +21,16 @@ outputs:
   prereleaseVersion: 
     description: "Prerelease Version"
   prereleaseStage:
-    description: "Prerelease Stage, excluded from prereleaseVersion"
+    description: "Prerelease Stage, extracted from prereleaseVersion"
   prereleaseBuildNumber:
-    description: "Prerelease Build Number, excluded from prereleaseVersion"
+    description: "Prerelease Build Number, extracted from prereleaseVersion"
     
   buildMetaDataVersion: 
     description: "Build Meta Data Version"
+  buildMetaDataType:
+    description: "Build Meta Data Type, extracted from buildMetaDataVersion"
   buildMetaDataBuildNumber:
-    description: "Build Meta Data Build Number, excluded from buildMetaDataVersion"
+    description: "Build Meta Data Build Number, extracted from buildMetaDataVersion"
        
 runs:
   using: "node16"

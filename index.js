@@ -29,7 +29,7 @@ try {
 	console.log(`Gradle Path : ${gradlePath}`);
 
 	fs.readFile(gradlePath, 'utf8', function (err, data) {
-		if(err){
+		if (err) {
 			core.setFailed(err.message);
 			return
 		}
@@ -55,10 +55,10 @@ try {
 		core.setOutput("minorVersion", `${minorVersion}`);
 		core.setOutput("patchVersion", `${patchVersion}`);
 
-		if(prereleaseVersion)
+		if (prereleaseVersion)
 			core.setOutput("prereleaseVersion", `${prereleaseVersion}`);
-		
-		if(buildMetaDataVersion)
+
+		if (buildMetaDataVersion)
 			core.setOutput("buildMetaDataVersion", `${buildMetaDataVersion}`);
 
 		if (prereleaseVersion && prereleaseVersion.length > 0) {
@@ -81,6 +81,14 @@ try {
 
 		if (buildMetaDataVersion && buildMetaDataVersion.length > 0) {
 			const buildMetaDataBuildNumberMatch = buildMetaDataVersion.match(prereleaseBuildNumberRegexPattern)
+			if (buildMetaDataBuildNumberMatch && buildMetaDataBuildNumberMatch.length >= groupPrereleaseIndex) {
+				const buildMetaDataType = buildMetaDataBuildNumberMatch[groupPrereleaseIndex];
+				if (buildMetaDataType) {
+					core.setOutput("buildMetaDataType", `${buildMetaDataType}`);
+				}
+			} else {
+				core.setOutput("buildMetaDataType", `${buildMetaDataType}`);
+			}
 			if (buildMetaDataBuildNumberMatch && buildMetaDataBuildNumberMatch.length >= groupBuildNumberIndex) {
 				const buildMetaDataBuildNumber = buildMetaDataBuildNumberMatch[groupBuildNumberIndex];
 				if (buildMetaDataBuildNumber) {
