@@ -12,5 +12,14 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devofure/version-reader-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Devofure/version-reader-action/issues"
+  },
+  "homepage": "https://github.com/Devofure/version-reader-action#readme"
 }
