@@ -1,0 +1,38 @@
+name: "Version Reader Action"
+description: "Get the version code, android version name and detailed version information"
+inputs:
+  gradlePath:
+    description: "Gradle path to override version"
+    required: true
+    default: "app/build.gradle"
+outputs:
+  versionName:
+    description: "Version Name"
+   versionCode:
+    description: "Version Code"
+    
+   majorVersion: 
+    description: "Major Version"
+   minorVersion: 
+    description: "Minor Version"
+   patchVersion: 
+    description: "Patch Version"
+
+   prereleaseVersion: 
+    description: "Prerelease Version"
+   prereleaseStage:
+    description: "Prerelease Stage, excluded from prereleaseVersion"
+   prereleaseBuildNumber:
+    description: "Prerelease Build Number, excluded from prereleaseVersion"
+    
+   buildMetaDataVersion: 
+    description: "Build Meta Data Version"
+   buildMetaDataBuildNumber:
+    description: "Build Meta Data Build Number, excluded from buildMetaDataVersion"
+       
+runs:
+  using: "node12"
+  main: "index.js"
+branding:
+  color: 'blue'
+  icon: 'anchor'
