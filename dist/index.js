@@ -8485,14 +8485,11 @@ try {
 		core.setOutput("minorVersion", `${minorVersion}`);
 		core.setOutput("patchVersion", `${patchVersion}`);
 
-		core.setOutput("prereleaseVersion", `${prereleaseVersion}`);
-		core.setOutput("buildMetaDataVersion", `${buildMetaDataVersion}`);
-
-		if (prereleaseVersion)
-			console.log(`prereleaseVersion = ${prereleaseVersion}`);
-
-		if (buildMetaDataVersion)
-			console.log(`buildMetaDataVersion = ${buildMetaDataVersion}`);
+		if(prereleaseVersion)
+			core.setOutput("prereleaseVersion", `${prereleaseVersion}`);
+		
+		if(buildMetaDataVersion)
+			core.setOutput("buildMetaDataVersion", `${buildMetaDataVersion}`);
 
 		if (prereleaseVersion && prereleaseVersion.length > 0) {
 			const prereleaseBuildNumberMatch = prereleaseVersion.match(prereleaseBuildNumberRegexPattern)
