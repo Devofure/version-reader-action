@@ -2,29 +2,31 @@
 
 Get the version code, android version name and detailed version information
 
+For more information about Semver version format -> https://semver.org/
 
 ```yaml
 
-inputs:
+# inputs:
   gradlePath: "Gradle path to override version"
     required: true
     default: "app/build.gradle"
-outputs:
-  versionName:
-  versionCode:
-  majorVersion: 
-  minorVersion: 
-  patchVersion: 
+```
 
-  prereleaseVersion: 
-  # Prerelease Stage, extracted from prereleaseVersion
-  prereleaseStage:
+``` yaml
+# outputs:
+  versionName
+  versionCode
+  majorVersion 
+  minorVersion 
+  patchVersion
+
+  prereleaseVersion
+  prereleaseStage
+  prereleaseBuildNumber
   
-  # Prerelease Build Number, extracted from prereleaseVersion
-  buildMetaDataVersion: 
-  prereleaseBuildNumber:
-  buildMetaDataBuildNumber:
-    description: "Build Meta Data Build Number, extracted from buildMetaDataVersion"
+  buildMetaDataVersion
+  buildMetaDataType
+  buildMetaDataBuildNumber
 ```
  
  ```powershell
@@ -84,7 +86,7 @@ versionName "1.1.2-prerelease+meta"
 versionCode 1435
 
 # outputs:
-versionName: "1.1.2"
+versionName: "1.1.2-prerelease+meta"
 versionCode: 1435
 majorVersion: 1
 minorVersion: 1
@@ -114,11 +116,11 @@ prereleaseBuildNumber: 1
 
 ```powershell
 # build.gradle:
-versionName "2.0.0-rc.21+beta.123"
+versionName "2.0.0-rc.21+debug.123"
 versionCode 4213
 
 # outputs:
-versionName: "2.0.0-rc.21+beta.123"
+versionName: "2.0.0-rc.21+debug.123"
 versionCode: 4213
 majorVersion: 2
 minorVersion: 0
@@ -128,5 +130,6 @@ prereleaseVersion: rc.21
 prereleaseStage: rc
 prereleaseBuildNumber: 21
 buildMetaDataVersion: beta.123
+buildMetaDataType: debug
 buildMetaDataBuildNumber: 123
 ```
