@@ -8,26 +8,26 @@ inputs:
 outputs:
   versionName:
     description: "Version Name"
-   versionCode:
+  versionCode:
     description: "Version Code"
     
-   majorVersion: 
+  majorVersion: 
     description: "Major Version"
-   minorVersion: 
+  minorVersion: 
     description: "Minor Version"
-   patchVersion: 
+  patchVersion: 
     description: "Patch Version"
 
-   prereleaseVersion: 
+  prereleaseVersion: 
     description: "Prerelease Version"
-   prereleaseStage:
+  prereleaseStage:
     description: "Prerelease Stage, excluded from prereleaseVersion"
-   prereleaseBuildNumber:
+  prereleaseBuildNumber:
     description: "Prerelease Build Number, excluded from prereleaseVersion"
     
-   buildMetaDataVersion: 
+  buildMetaDataVersion: 
     description: "Build Meta Data Version"
-   buildMetaDataBuildNumber:
+  buildMetaDataBuildNumber:
     description: "Build Meta Data Build Number, excluded from buildMetaDataVersion"
        
 runs:
