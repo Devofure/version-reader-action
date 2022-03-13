@@ -1,19 +1,29 @@
-# Devofure/version-reader-action
+# Devofure/version-reader-action@1.0.0
 
 Get the version code, android version name and detailed version information
 
 For more information about Semver version format -> https://semver.org/
 
-```yaml
+### Simple Example:
 
-# inputs:
-  gradlePath: "Gradle path to override version"
-    required: true
-    default: "app/build.gradle"
+```yaml
+  - name: version reader
+    id: versionReader
+    uses: Devofure/version-reader-action@1.0.0 
+    # Default is app/build.gradle
+```
+Or
+```yaml
+  - name: version reader
+    id: versionReader
+    uses: Devofure/version-reader-action@1.0.0
+    with:
+      gradlePath: app/build.gradle # Default is app/build.gradle
 ```
 
+
+### outputs:
 ``` yaml
-# outputs:
   versionName
   versionCode
   majorVersion 
@@ -28,7 +38,39 @@ For more information about Semver version format -> https://semver.org/
   buildMetaDataType
   buildMetaDataBuildNumber
 ```
- 
+
+## Part of an example
+
+``` yaml
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   steps:
+
+     - uses: actions/checkout@v2
+
+     - name: version reader
+       id: versionReader
+       uses: Devofure/version-reader-action@1.0.0
+       
+    # possible to use:
+    # ${{ steps.versionReader.outputs.versionName }}
+    # ${{ steps.versionReader.outputs.versionCode }}
+    # ${{ steps.versionReader.outputs.majorVersion  }}
+    # ${{ steps.versionReader.outputs.minorVersion  }}
+    # ${{ steps.versionReader.outputs.patchVersion }}
+    
+    # ${{ steps.versionReader.outputs.prereleaseVersion }}
+    # ${{ steps.versionReader.outputs.prereleaseStage }}
+    # ${{ steps.versionReader.outputs.prereleaseBuildNumber }}
+    
+    # ${{ steps.versionReader.outputs.buildMetaDataVersion }}
+    # ${{ steps.versionReader.outputs.buildMetaDataType }}
+    # ${{ steps.versionReader.outputs.buildMetaDataBuildNumber }}    
+    
+```
+
+## Versions in detail
  ```powershell
 # Given versionCode 345
  345
@@ -50,6 +92,7 @@ For more information about Semver version format -> https://semver.org/
 
 ```
 
+## Some example of the version format supported
 ```powershell
 # build.gradle:
 versionName "1.2.3"
@@ -99,18 +142,18 @@ buildMetaDataVersion: meta
 
 ```powershell
 # build.gradle:
-versionName "1.0.0-alpha.beta.1"
+versionName "1.0.0-alpha.debug.1"
 versionCode 4213
 
 # outputs:
-versionName: "1.0.0-alpha.beta.1"
+versionName: "1.0.0-alpha.debug.1"
 versionCode: 4213
 majorVersion: 1
 minorVersion: 0
 patchVersion: 0
 
-prereleaseVersion: alpha.beta.1
-prereleaseStage: alpha.beta
+prereleaseVersion: alpha.debug.1
+prereleaseStage: alpha.debug
 prereleaseBuildNumber: 1
 ```
 
@@ -129,7 +172,7 @@ patchVersion: 0
 prereleaseVersion: rc.21
 prereleaseStage: rc
 prereleaseBuildNumber: 21
-buildMetaDataVersion: beta.123
+buildMetaDataVersion: debug.123
 buildMetaDataType: debug
 buildMetaDataBuildNumber: 123
 ```
