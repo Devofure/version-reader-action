@@ -25,12 +25,12 @@ const groupBuildNumberIndex = 3
 
 
 try {
-    const gradlePath = core.getInput('gradlePath');
-    console.log(`Gradle Path : ${gradlePath}`);
+	const gradlePath = core.getInput('gradlePath');
+	console.log(`Gradle Path : ${gradlePath}`);
 
-    fs.readFile(gradlePath, 'utf8', function (err, data) {
-        newGradle = data;
-		
+	fs.readFile(gradlePath, 'utf8', function (err, data) {
+		newGradle = data;
+
 		const versionCode = newGradle.match(versionCodeRegexPattern)[groupVersionCodeValueIndex];
 		const versionName = newGradle.match(versionNameRegexPattern)[groupVersionNameValueIndex];
 		const semverVersionMatch = versionName.match(semverVersionFromVersionNameRegexPattern);
@@ -40,21 +40,24 @@ try {
 		const patchVersion = semverVersionMatch[groupPatchVersionIndex];
 		const prereleaseVersion = semverVersionMatch[groupPrereleaseBuildIndex];
 		const buildMetaDataVersion = semverVersionMatch[groupBuildMetaDataIndex];
-		
+
+		console.log(`versionName : ${versionName}`);
 		core.setOutput("versionName", `${versionName}`);
+
+		console.log(`versionCode : ${versionCode}`);
 		core.setOutput("versionCode", `${versionCode}`);
 
 		core.setOutput("majorVersion", `${majorVersion}`);
 		core.setOutput("minorVersion", `${minorVersion}`);
-        core.setOutput("patchVersion", `${patchVersion}`);
+		core.setOutput("patchVersion", `${patchVersion}`);
 
 		core.setOutput("prereleaseVersion", `${prereleaseVersion}`);
 		core.setOutput("buildMetaDataVersion", `${buildMetaDataVersion}`);
-		
-		if(prereleaseVersion)
+
+		if (prereleaseVersion)
 			console.log(`prereleaseVersion = ${prereleaseVersion}`);
 
-		if(buildMetaDataVersion)
+		if (buildMetaDataVersion)
 			console.log(`buildMetaDataVersion = ${buildMetaDataVersion}`);
 
 		if (prereleaseVersion && prereleaseVersion.length > 0) {
@@ -62,30 +65,30 @@ try {
 			if (prereleaseBuildNumberMatch && prereleaseBuildNumberMatch.length >= groupPrereleaseIndex) {
 				const prereleaseStage = prereleaseBuildNumberMatch[groupPrereleaseIndex];
 				if (prereleaseStage) {
-					console.log(`prereleaseStage = ${prereleaseStage}`);
+					core.setOutput("prereleaseStage", `${prereleaseStage}`);
 				}
 			} else {
-				console.log(`prereleaseStage = prereleaseVersion = ${prereleaseVersion}`);
+				core.setOutput("prereleaseStage", `${prereleaseVersion}`);
 			}
 			if (prereleaseBuildNumberMatch && prereleaseBuildNumberMatch.length >= groupBuildNumberIndex) {
 				const prereleaseBuildNumber = prereleaseBuildNumberMatch[groupBuildNumberIndex];
 				if (prereleaseBuildNumber && prereleaseBuildNumber.length > 0) {
-					console.log(`prereleaseBuildNumber = ${prereleaseBuildNumber}`);
+					core.setOutput("prereleaseBuildNumber", `${prereleaseBuildNumber}`);
 				}
 			}
 		}
 
 		if (buildMetaDataVersion && buildMetaDataVersion.length > 0) {
-		  const buildMetaDataBuildNumberMatch = buildMetaDataVersion.match(prereleaseBuildNumberRegexPattern)
-		  if (buildMetaDataBuildNumberMatch && buildMetaDataBuildNumberMatch.length >= groupBuildNumberIndex) {
-			const buildMetaDataBuildNumber = buildMetaDataBuildNumberMatch[groupBuildNumberIndex];
-			if (buildMetaDataBuildNumber) {
-			  console.log(`buildMetaDataBuildNumber = ${buildMetaDataBuildNumber}`);
+			const buildMetaDataBuildNumberMatch = buildMetaDataVersion.match(prereleaseBuildNumberRegexPattern)
+			if (buildMetaDataBuildNumberMatch && buildMetaDataBuildNumberMatch.length >= groupBuildNumberIndex) {
+				const buildMetaDataBuildNumber = buildMetaDataBuildNumberMatch[groupBuildNumberIndex];
+				if (buildMetaDataBuildNumber) {
+					core.setOutput("buildMetaDataBuildNumber", `${buildMetaDataBuildNumber}`);
+				}
 			}
-		  }
 		}
-    });
+	});
 
 } catch (error) {
-    core.setFailed(error.message);
+	core.setFailed(error.message);
 }
