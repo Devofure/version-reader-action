@@ -9,14 +9,14 @@ For more information about Semver version format -> https://semver.org/
 ```yaml
   - name: version reader
     id: versionReader
-    uses: Devofure/version-reader-action@v1.0.0 
+    uses: Devofure/version-reader-action@v1.0.1 
     # Default is app/build.gradle
 ```
 Or
 ```yaml
   - name: version reader
     id: versionReader
-    uses: Devofure/version-reader-action@v1.0.0
+    uses: Devofure/version-reader-action@v1.0.1
     with:
       gradlePath: app/build.gradle # Default is app/build.gradle
 ```
@@ -51,7 +51,7 @@ jobs:
 
      - name: version reader
        id: versionReader
-       uses: Devofure/version-reader-action@v1.0.0
+       uses: Devofure/version-reader-action@v1.0.1
        
     # possible to use:
     # ${{ steps.versionReader.outputs.versionName }}
