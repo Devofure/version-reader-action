@@ -48,7 +48,7 @@ try {
 		console.log(`versionName : ${versionName}`);
 		core.setOutput("versionName", `${versionName}`);
 
-		const cleanVersionName = versionName.replace(/'/g, "")
+		const cleanVersionName = versionName.replace(/['"]+/g, '')
 		console.log(`cleanVersionName : ${cleanVersionName}`);
 		core.setOutput("cleanVersionName", `${cleanVersionName}`);
 
