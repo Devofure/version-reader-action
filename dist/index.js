@@ -10214,6 +10214,10 @@ try {
 		console.log(`versionName : ${versionName}`);
 		core.setOutput("versionName", `${versionName}`);
 
+		const cleanVersionName = versionName.replace(/'/g, '')
+		console.log(`cleanVersionName : ${cleanVersionName}`);
+		core.setOutput("cleanVersionName", `${cleanVersionName}`);
+
 		console.log(`versionCode : ${versionCode}`);
 		core.setOutput("versionCode", `${versionCode}`);
 

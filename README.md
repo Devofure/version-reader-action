@@ -24,6 +24,7 @@ Or
 
 ### outputs:
 ``` yaml
+  cleanVersionName
   versionName
   versionCode
   majorVersion 
@@ -54,6 +55,7 @@ jobs:
        uses: Devofure/version-reader-action@v1.0.1
        
     # possible to use:
+    # ${{ steps.versionReader.outputs.cleanVersionName }}
     # ${{ steps.versionReader.outputs.versionName }}
     # ${{ steps.versionReader.outputs.versionCode }}
     # ${{ steps.versionReader.outputs.majorVersion  }}
