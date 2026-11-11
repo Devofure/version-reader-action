@@ -4,6 +4,23 @@ Get the version code, android version name and detailed version information
 
 For more information about Semver version format -> https://semver.org/
 
+The action runs on Node.js 24. Self-hosted runners must support the `node24`
+GitHub Actions runtime.
+
+## Development
+
+Use Node.js 24 or newer. Install the locked dependencies, rebuild the bundled
+action, and run the integration tests:
+
+```sh
+npm ci
+npm run build
+npm test
+```
+
+Commit the generated files in `dist/` when updating the source or dependencies;
+GitHub Actions executes `dist/index.js` without installing npm packages.
+
 ### Simple Example:
 
 ```yaml

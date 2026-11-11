@@ -1,6 +1,5 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const fs = require('fs');
+import * as core from '@actions/core';
+import * as fs from 'node:fs';
 
 // versionCode — A positive integer [...] -> https://developer.android.com/studio/publish/versioning
 const versionCodeRegexPattern = /(versionCode(?:\s|=)*)(.*)/;
@@ -33,7 +32,7 @@ try {
 			core.setFailed(err.message);
 			return
 		}
-		newGradle = data;
+		const newGradle = data;
 
 		const versionCode = newGradle.match(versionCodeRegexPattern)[groupVersionCodeValueIndex];
 		const versionName = newGradle.match(versionNameRegexPattern)[groupVersionNameValueIndex];

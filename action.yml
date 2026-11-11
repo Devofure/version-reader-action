@@ -33,7 +33,7 @@ outputs:
     description: "Build Meta Data Build Number, extracted from buildMetaDataVersion"
        
 runs:
-  using: "node16"
+  using: "node24"
   main: 'dist/index.js'
 branding:
   color: 'blue'
